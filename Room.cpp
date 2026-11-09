@@ -21,8 +21,9 @@ Room::Room(int x, int y, Player * player) {
         for(int innerCounter = 0; innerCounter < x; innerCounter++) {
             if(outerCounter == 0 || outerCounter == (y - 1) || innerCounter == 0 || innerCounter == (x - 1)) {
                 this->map[outerCounter][innerCounter] = '#';
-            } else if(rand() % 8 == 0 && !(innerCounter == player->getX() && outerCounter == player->getY())) {
-                // about one inside space in eight is a wall, but never where the player starts
+            } else if(rand() % 8 == 0 && outerCounter > 1 && outerCounter < (y - 2) && innerCounter > 1 && innerCounter < (x - 2)) {
+                // about one inside space in eight is a wall, but never right next to the outer wall,
+                // so the player can always walk around the edge (and starts on an open space)
                 this->map[outerCounter][innerCounter] = '#';
             } else {
                 this->map[outerCounter][innerCounter] = ' ';
