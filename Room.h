@@ -41,8 +41,6 @@ class Room {
         // #           #        #
         // #                    #
         // ######################
-    
-        // TODO: what type should the map be? probably some kind of array of type char, but we'll see
 
     public:
 

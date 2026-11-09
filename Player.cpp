@@ -2,8 +2,9 @@
 #include "Room.h"
 
 Player::Player() {
-    this->x = 3;
-    this->y = 3;
+    // the top-left open space, which every map has
+    this->x = 1;
+    this->y = 1;
 }
 Player::~Player() {
     // leave this empty since player currently doesn't allocate any memory that it needs to clean up.
