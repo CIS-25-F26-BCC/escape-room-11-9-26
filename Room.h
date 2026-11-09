@@ -1,7 +1,8 @@
-
+#include "Item.h"
 
 #ifndef ROOM_H
 #define ROOM_H
+
 
 // The map has a wall of # characters all the way around its edge. More # characters are distributed around the inside of the map, and they act as walls too.
 
@@ -49,6 +50,8 @@ class Room {
         void draw();
         // char tileAt(int x, int y); might consider this for later
         bool canMove(int x, int y);
+        void placeItem(Item * i, int x, int y);
+        Item takeItem(int x, int y);
 };
 
 #endif

@@ -1,5 +1,7 @@
 #include "Player.h"
 #include "Room.h"
+#include "Item.h"
+#include "Inventory.h"
 
 Player::Player() {
     // the top-left open space, which every map has
@@ -17,7 +19,10 @@ int Player::getY() {
     return this->y;
 }
 
+
+
 // return true if they player moved or false if not
+// TODO: After a move, it takes anything lying on its new space and adds it to the inventory.
 bool Player::move(char direction, Room * room) {
 
 
@@ -51,4 +56,14 @@ bool Player::move(char direction, Room * room) {
 
 
     return false; // either an invalid direction or can't move there
+}
+
+void Player::getItem(Room * r, int x, int y) {
+    Item itemFromMap = r->takeItem(x, y);
+    Item * item = new Item(itemFromMap.getId(), itemFromMap.getName());
+    this->inventory.addItem(item);
+}
+
+std::string Player::printInventory() {
+    return inventory.printInventory();
 }

@@ -3,6 +3,7 @@
 #include <ctime>
 #include "Player.h"
 #include "Room.h"
+#include "Item.h"
 
 using namespace std;
 
@@ -26,13 +27,16 @@ int main() {
 
     Player player;
     Room room(columns, rows, &player);
-    
+
+    Item key('k', "key");
+    room.placeItem(&key, 2,2);
 
     bool isRunning = true;
 
     while(isRunning) { // main game loop
 
         room.draw();
+        cout << player.printInventory();
 
         char input;
         cout << endl << endl << "Please use the wasd keys to move or press q to quit: ";
